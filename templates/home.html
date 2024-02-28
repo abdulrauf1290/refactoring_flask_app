@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative; /* Set position to relative to allow absolute positioning of overlay */
+            background-image: url('https://media.glassdoor.com/lst2x/69/95/0d/aa/banner.jpg');
+            background-size: 420px 420px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1; /* Ensure overlay is above background image */
+        }
+        .content {
+            z-index: 2; /* Ensure content is above overlay */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="overlay"></div> <!-- Semi-transparent black overlay -->
+        <div class="content">
+            <form action="/" method="POST">
+                <input type="text" name="note" placeholder="Enter a note">
+                <button type="submit">Add Note</button>
+            </form>
+    
+            {% if notes %}
+            <ul>
+                {% for note in notes %}
+                <li>{{ note }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
